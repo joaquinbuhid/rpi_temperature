@@ -1,7 +1,7 @@
 import adafruit_dht
 import board
 
-dht_device = adafruit_dht.DHT22(D4) # Or DHT22, AM2302 etc.
+dht_device = adafruit_dht.DHT22(board.D4) # Or DHT22, AM2302 etc.
 
 try:
     temperature = dht_device.temperature
