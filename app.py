@@ -1,11 +1,12 @@
-#Libraries
-import Adafruit_DHT as dht
-from time import sleep
-#Set DATA pin
-DHT = 4
-while True:
-    #Read Temp and Hum from DHT22
-    h,t = dht.read_retry(dht.DHT22, DHT)
-    #Print Temperature and Humidity on Shell window
-    print(f'Temp={t}*C  Humidity={h}%')
-    sleep(5) #Wait 5 seconds and read again
+import adafruit_dht
+import board
+
+dht_device = adafruit_dht.DHT11(board.D4) # Or DHT22, AM2302 etc.
+
+try:
+    temperature = dht_device.temperature
+    humidity = dht_device.humidity
+    print(f"Temp={temperature}C Humidity={humidity}%")
+except RuntimeError as e:
+    # Reading doesn't always work on Linux, so catch the exception
+    print(f"Reading error: {e.args[0]}")
