@@ -1,7 +1,9 @@
 import adafruit_dht
 import board
+import digitalio
 
-dht_device = adafruit_dht.DHT22(board.D4) # Or DHT22, AM2302 etc.
+dht_device = adafruit_dht.DHT22(board.G4) # Algunos modelos usan G4 en lugar de D4
+#dht_device = adafruit_dht.DHT22(board.D4) # Or DHT22, AM2302 etc.
 
 try:
     temperature = dht_device.temperature
